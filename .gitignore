@@ -1,0 +1,13 @@
+# Nushell generated files
+*.gif
+*.mp4
+*.webp
+*.png
+history.txt
+
+# Local secrets
+local.nu
+
+# OS files
+Thumbs.db
+.DS_Store
