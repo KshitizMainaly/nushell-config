@@ -351,11 +351,12 @@ $env.config.hooks.pre_prompt = ($env.config.hooks.pre_prompt | append {||
 
     # 2) Desktop toast when the previous foreground command ran longer than the
     #    threshold. Fires regardless of which tab is focused; tune below.
-    let threshold_ms = 10000
-    let dur = ($env.CMD_DURATION_MS? | default "0" | into int)
-    if $dur > $threshold_ms {
-        let secs = ($dur / 1000 | math round --precision 1)
-        let last = (do -i { history | last 1 | get command.0 } | default "command" | str trim)
-        print -n $"($ESC)]777;notify;Done in ($secs)s;($last)($BEL)"
-    }
+    # [DISABLED for Performance: Prevents WezTerm from hooking into Windows OS Notifications and stuttering]
+    # let threshold_ms = 10000
+    # let dur = ($env.CMD_DURATION_MS? | default "0" | into int)
+    # if $dur > $threshold_ms {
+    #     let secs = ($dur / 1000 | math round --precision 1)
+    #     let last = (do -i { history | last 1 | get command.0 } | default "command" | str trim)
+    #     print -n $"($ESC)]777;notify;Done in ($secs)s;($last)($BEL)"
+    # }
 })
